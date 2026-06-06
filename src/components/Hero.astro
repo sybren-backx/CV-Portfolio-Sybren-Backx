@@ -4,56 +4,72 @@ import { siteConfig } from "../config";
 
 <section
   id="hero"
-  class="relative min-h-screen bg-transparent overflow-hidden px-6 sm:px-10 md:px-16 lg:px-24"
+  class="relative min-h-screen bg-transparent overflow-hidden px-4 sm:px-6 md:px-16 lg:px-24"
 >
   <!-- BACKGROUND GLOW -->
   <div class="absolute inset-0 -z-10">
     <div
-      class="absolute top-24 left-10 h-[32rem] w-[32rem] rounded-full blur-3xl opacity-30 animate-glow-slow"
+      class="absolute top-24 left-1/2 -translate-x-1/2 sm:left-10 sm:translate-x-0
+             h-[22rem] w-[22rem] sm:h-[32rem] sm:w-[32rem]
+             rounded-full blur-3xl opacity-30 animate-glow-slow"
       style="background: rgba(245, 158, 11, 0.12)"
     >
     </div>
 
     <div
-      class="absolute bottom-10 right-10 h-[34rem] w-[34rem] rounded-full blur-3xl opacity-20"
+      class="absolute bottom-10 right-1/2 translate-x-1/2 sm:right-10 sm:translate-x-0
+             h-[24rem] w-[24rem] sm:h-[34rem] sm:w-[34rem]
+             rounded-full blur-3xl opacity-20"
       style="background: rgba(255, 255, 255, 0.05)"
     >
     </div>
   </div>
 
   <div
-    class="max-w-6xl mx-auto min-h-screen grid grid-cols-1 lg:grid-cols-2 items-center gap-16"
+    class="max-w-6xl mx-auto min-h-screen
+           grid grid-cols-1 lg:grid-cols-2
+           items-center gap-10 lg:gap-16"
   >
     <!-- LEFT -->
-    <div class="space-y-8">
+    <div class="space-y-6 sm:space-y-8 pt-24 sm:pt-0">
       <div class="space-y-4">
         <p
-          class="font-mono text-xs tracking-[0.3em] uppercase text-[rgba(245,158,11,0.8)]"
+          class="font-mono text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em]
+                 uppercase text-[rgba(245,158,11,0.8)]"
         >
           Portfolio
         </p>
 
         <h1
-          class="font-syne text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-bold leading-[1.05]"
+          class="font-syne text-4xl sm:text-5xl md:text-6xl xl:text-7xl
+                 font-bold leading-[1.05]"
         >
           {siteConfig.name}
         </h1>
 
-        <div class="w-16 h-[2px] bg-[rgba(245,158,11,0.6)] rounded-full"></div>
+        <div
+          class="w-14 sm:w-16 h-[2px] bg-[rgba(245,158,11,0.6)] rounded-full"
+        >
+        </div>
       </div>
 
-      <p class="text-lg md:text-xl text-white/60 max-w-xl leading-relaxed">
+      <p
+        class="text-base sm:text-lg md:text-xl text-white/60 max-w-xl leading-relaxed"
+      >
         {siteConfig.heroTitle}
       </p>
 
-      <p class="text-white/60 max-w-xl leading-relaxed">
+      <p class="text-sm sm:text-base text-white/60 max-w-xl leading-relaxed">
         {siteConfig.heroSubTitle}
       </p>
 
-      <div class="flex flex-wrap gap-4 pt-4">
+      <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
         <a
           href="#projects"
-          class="px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition"
+          class="px-5 py-3 sm:px-6 sm:py-3 rounded-full
+                 bg-white/5 border border-white/10
+                 hover:border-white/20 hover:bg-white/10
+                 transition text-center"
         >
           View Projects
         </a>
@@ -61,23 +77,34 @@ import { siteConfig } from "../config";
         <a
           href="/documents/CV Sybren Backx.pdf"
           download
-          class="px-6 py-3 rounded-full text-xl text-[rgba(245,158,11,0.9)] bg-[rgba(255,172,29,0.1)] border border-[rgba(245,158,11,0.25)] hover:border-[rgba(255,186,68,0.5)] transition"
+          class="px-5 py-3 sm:px-6 sm:py-3 rounded-full
+                 text-[rgba(245,158,11,0.9)]
+                 bg-[rgba(255,172,29,0.1)]
+                 border border-[rgba(245,158,11,0.25)]
+                 hover:border-[rgba(255,186,68,0.5)]
+                 transition text-center"
         >
           Download CV
         </a>
       </div>
     </div>
+
     <!-- RIGHT IMAGE -->
-    <div class="relative flex justify-center lg:justify-end">
+    <div class="relative flex justify-center lg:justify-end mt-10 lg:mt-0">
       <div
-        class="absolute inset-6 rounded-[2.5rem] rotate-6 border border-white/10"
+        class="absolute inset-4 sm:inset-6
+               rounded-[2rem] sm:rounded-[2.5rem]
+               rotate-3 sm:rotate-6
+               border border-white/10"
       >
       </div>
 
-      <!-- image -->
       <div
-        class="relative w-[280px] sm:w-[340px] md:w-[420px] xl:w-[480px]
-               aspect-[4/5] rounded-[2.5rem] overflow-hidden border border-white/10 bg-white/5 shadow-2xl"
+        class="relative
+               w-[220px] sm:w-[300px] md:w-[380px] lg:w-[420px] xl:w-[480px]
+               aspect-[4/5] rounded-[2rem] sm:rounded-[2.5rem]
+               overflow-hidden border border-white/10
+               bg-white/5 shadow-2xl"
       >
         <img
           src="/images/profile.jpg"
@@ -86,13 +113,15 @@ import { siteConfig } from "../config";
         />
 
         <div
-          class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
+          class="absolute inset-0
+                 bg-gradient-to-t from-black/50 via-transparent to-transparent"
         >
         </div>
       </div>
     </div>
   </div>
 </section>
+
 <script>
   const hero = document.getElementById("hero");
 
@@ -102,15 +131,13 @@ import { siteConfig } from "../config";
 
     if (hero) {
       hero.style.transform = `
-        scale(${1 - progress * 0.08})
-        translateY(${progress * -40}px)
+        scale(${1 - progress * 0.05})
+        translateY(${progress * -25}px)
       `;
 
-      hero.style.opacity = `${1 - progress * 0.3}`;
+      hero.style.opacity = `${1 - progress * 0.25}`;
     }
   }
-
-  updateHero();
 
   window.addEventListener("scroll", updateHero);
 </script>
@@ -128,7 +155,5 @@ import { siteConfig } from "../config";
       rgba(245, 158, 11, 0.18),
       transparent 45%
     );
-
-    transition: background 0.1s ease;
   }
 </style>

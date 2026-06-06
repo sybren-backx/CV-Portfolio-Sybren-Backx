@@ -4,173 +4,119 @@ import { siteConfig } from "../config";
 
 <section
   id="about"
-  class="relative overflow-hidden bg-transparent px-6 sm:px-10 md:px-16 lg:px-24 py-10"
+  class="relative overflow-hidden bg-transparent px-4 sm:px-6 md:px-16 lg:px-24 py-16"
 >
   <!-- BACKGROUND -->
   <div class="absolute inset-0 -z-10">
-    <!-- orange glow -->
     <div
-      class="absolute top-24 right-10 h-[30rem] w-[30rem] rounded-full blur-3xl opacity-30"
+      class="absolute top-24 right-1/2 translate-x-1/2 sm:right-10 sm:translate-x-0
+             h-[22rem] w-[22rem] sm:h-[30rem] sm:w-[30rem]
+             rounded-full blur-3xl opacity-30"
       style="background: rgba(245, 158, 11, 0.12)"
     >
     </div>
 
-    <!-- soft ambient light -->
     <div
-      class="absolute bottom-10 left-10 h-[32rem] w-[32rem] rounded-full blur-3xl opacity-20"
+      class="absolute bottom-10 left-1/2 -translate-x-1/2 sm:left-10 sm:translate-x-0
+             h-[24rem] w-[24rem] sm:h-[32rem] sm:w-[32rem]
+             rounded-full blur-3xl opacity-20"
       style="background: rgba(255, 255, 255, 0.05)"
     >
     </div>
   </div>
 
-  <div class="max-w-6xl mx-auto space-y-16">
+  <div class="max-w-6xl mx-auto space-y-12 sm:space-y-16">
     <!-- TITLE -->
     <div>
-      <h2 class="font-syne text-5xl md:text-6xl font-bold text-white">
+      <h2
+        class="font-syne text-4xl sm:text-5xl md:text-6xl font-bold text-white"
+      >
         About Me
       </h2>
 
       <div
-        class="w-24 h-[2px] mt-5 rounded-full bg-[rgba(245,158,11,0.7)] shadow-[0_0_25px_rgba(245,158,11,0.25)]"
+        class="w-20 sm:w-24 h-[2px] mt-4 sm:mt-5 rounded-full
+               bg-[rgba(245,158,11,0.7)]
+               shadow-[0_0_25px_rgba(245,158,11,0.25)]"
       >
       </div>
     </div>
 
     <!-- CONTENT -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
       <!-- IMAGE -->
-      <div class="lg:col-span-4 relative max-w-sm">
-        <!-- glow frame -->
-        <div
-          class="absolute inset-4 rounded-[2rem] rotate-6 border border-white/10 bg-white/5 backdrop-blur-xl"
-        >
-        </div>
-
-        <div
-          class="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-2xl"
-        >
-          <img
-            src="/images/photo.jpeg"
-            alt="Profile picture"
-            class="w-full h-full object-cover"
-          />
-
-          <!-- orange edge accent -->
+      <div class="lg:col-span-4 flex justify-center lg:justify-start">
+        <div class="relative w-full max-w-xs sm:max-w-sm">
+          <!-- glow frame -->
           <div
-            class="absolute inset-0 ring-1 ring-inset ring-[rgba(245,158,11,0.08)]"
+            class="absolute inset-3 sm:inset-4 rounded-[2rem] rotate-3 sm:rotate-6
+                   border border-white/10 bg-white/5 backdrop-blur-xl"
           >
+          </div>
+
+          <div
+            class="relative aspect-[4/5] overflow-hidden rounded-[2rem]
+                   border border-white/10 bg-white/5 shadow-2xl"
+          >
+            <img
+              src="/images/photo.jpeg"
+              alt="Profile picture"
+              class="w-full h-full object-cover"
+            />
+
+            <div
+              class="absolute inset-0 ring-1 ring-inset
+                     ring-[rgba(245,158,11,0.08)]"
+            >
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- TEXT + SKILLS -->
+      <!-- TEXT -->
       <div class="lg:col-span-8 space-y-10">
-        <!-- ABOUT TEXT -->
-        <p class="text-lg md:text-xl text-white/75 leading-relaxed">
+        <p
+          class="text-base sm:text-lg md:text-xl text-white/75 leading-relaxed"
+        >
           <span set:html={siteConfig.aboutMe} />
         </p>
 
         <!-- SKILLS GRID -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-          <!-- LANGUAGES -->
-          <div
-            class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl"
-          >
-            <h3
-              class="text-s uppercase tracking-[0.2em] text-[rgba(245,158,11,0.80)] mb-3"
-            >
-              Languages
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              {
-                siteConfig.skills.languages.map((skill) => (
-                  <span class="px-3 py-1 rounded-full text-xs bg-black/20 border border-white/10 text-white/70 hover:border-[rgba(245,158,11,0.4)] hover:text-white transition">
-                    {skill}
-                  </span>
-                ))
-              }
-            </div>
-          </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <!-- SKILL BLOCK -->
+          {
+            [
+              ["Languages", siteConfig.skills.languages],
+              ["Frontend", siteConfig.skills.frontend],
+              ["Backend", siteConfig.skills.backend],
+              ["Mobile", siteConfig.skills.mobile],
+              ["Workflow", siteConfig.skills.tools],
+            ].map(([title, list]) => (
+              <div
+                class="p-4 sm:p-5 rounded-xl border border-white/10 
+                     bg-white/5 backdrop-blur-xl"
+              >
+                <h3
+                  class="text-xs sm:text-sm uppercase tracking-[0.2em] 
+                       text-[rgba(245,158,11,0.80)] mb-3"
+                >
+                  {title}
+                </h3>
 
-          <!-- FRONTEND -->
-          <div
-            class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl"
-          >
-            <h3
-              class="text-s uppercase tracking-[0.2em] text-[rgba(245,158,11,0.80)] mb-3"
-            >
-              Frontend
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              {
-                siteConfig.skills.frontend.map((skill) => (
-                  <span class="px-3 py-1 rounded-full text-xs bg-black/20 border border-white/10 text-white/70 hover:border-[rgba(245,158,11,0.4)] hover:text-white transition">
-                    {skill}
-                  </span>
-                ))
-              }
-            </div>
-          </div>
-
-          <!-- BACKEND -->
-          <div
-            class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl"
-          >
-            <h3
-              class="text-s uppercase tracking-[0.2em] text-[rgba(245,158,11,0.80)] mb-3"
-            >
-              Backend
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              {
-                siteConfig.skills.backend.map((skill) => (
-                  <span class="px-3 py-1 rounded-full text-xs bg-black/20 border border-white/10 text-white/70 hover:border-[rgba(245,158,11,0.4)] hover:text-white transition">
-                    {skill}
-                  </span>
-                ))
-              }
-            </div>
-          </div>
-
-          <!-- MOBILE -->
-          <div
-            class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl"
-          >
-            <h3
-              class="text-s uppercase tracking-[0.2em] text-[rgba(245,158,11,0.80)] mb-3"
-            >
-              Mobile
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              {
-                siteConfig.skills.mobile.map((skill) => (
-                  <span class="px-3 py-1 rounded-full text-xs bg-black/20 border border-white/10 text-white/70 hover:border-[rgba(245,158,11,0.4)] hover:text-white transition">
-                    {skill}
-                  </span>
-                ))
-              }
-            </div>
-          </div>
-
-          <!-- WORKFLOW -->
-          <div
-            class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl"
-          >
-            <h3
-              class="text-s uppercase tracking-[0.2em] text-[rgba(245,158,11,0.80)] mb-3"
-            >
-              Workflow
-            </h3>
-            <div class="flex flex-wrap gap-2">
-              {
-                siteConfig.skills.tools.map((skill) => (
-                  <span class="px-3 py-1 rounded-full text-xs bg-black/20 border border-white/10 text-white/70 hover:border-[rgba(245,158,11,0.4)] hover:text-white transition">
-                    {skill}
-                  </span>
-                ))
-              }
-            </div>
-          </div>
+                <div class="flex flex-wrap gap-2">
+                  {list.map((skill) => (
+                    <span
+                      class="px-2 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs
+                           bg-black/20 border border-white/10 text-white/70
+                           hover:border-[rgba(245,158,11,0.4)] hover:text-white transition"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>

@@ -1,27 +1,10 @@
----
-import { siteConfig } from "../config";
----
-
+<!-- MOBILE NAV -->
 <!-- MOBILE NAV -->
 <header class="md:hidden fixed top-0 left-0 w-full z-50">
-  <nav
-    class="relative px-5 py-4
-           bg-[#0d0a07]/60 backdrop-blur-2xl
-           border-b border-white/10
-           shadow-[0_20px_60px_rgba(0,0,0,0.6)]
-           flex items-center justify-between"
-  >
-
-    <!-- subtle glow -->
-    <div class="absolute inset-0 pointer-events-none opacity-30">
-      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[22rem] h-14 blur-3xl bg-[rgba(245,158,11,0.15)]"></div>
-    </div>
-
-    <a href="/" class="text-sm font-semibold text-[rgba(245,158,11,0.9)]">
-      Sybren Backx
-    </a>
-
-    <div class="flex gap-4 text-xs">
+  <nav class="bg-[#0d0a07]/90 backdrop-blur-xl border-b border-white/10">
+    <div
+      class="flex flex-wrap gap-x-4 gap-y-1 px-3 py-2 text-[11px]"
+    >
       {[
         ["About", "/#about"],
         ["Projects", "/#projects"],
@@ -31,7 +14,7 @@ import { siteConfig } from "../config";
       ].map(([label, href]) => (
         <a
           href={href}
-          class="text-white/60 hover:text-[rgba(245,158,11,0.9)] transition"
+          class="text-white/60 hover:text-amber-400 transition"
         >
           {label}
         </a>
@@ -43,7 +26,7 @@ import { siteConfig } from "../config";
 <!-- DESKTOP DOCK -->
 <header
   id="header"
-  class="fixed top-1/2 left-6 -translate-y-1/2 z-50 hidden md:block"
+  class="fixed top-1/2 left-2 sm:left-4 md:left-6 -translate-y-1/2 z-50 hidden md:block"
 >
 
   <!-- spine -->
@@ -54,8 +37,8 @@ import { siteConfig } from "../config";
   <nav
     id="dock"
     class="relative flex flex-col justify-between
-           h-[72vh] min-h-[460px]
-           px-2 py-6
+           h-[70vh] min-h-[420px] md:min-h-[460px]
+           px-2 py-4 sm:py-6
            bg-transparent
            border border-white/10
            backdrop-blur-xl
@@ -63,7 +46,7 @@ import { siteConfig } from "../config";
            overflow-hidden"
   >
 
-    <!-- soft ambient glow only -->
+    <!-- glow -->
     <div
       class="absolute inset-0 opacity-20 pointer-events-none"
       style="background: radial-gradient(circle at 50% 20%, rgba(245,158,11,0.18), transparent 65%)"
@@ -93,10 +76,10 @@ import { siteConfig } from "../config";
           <a
             href={href}
             data-target={target}
-            class="dock-item relative flex items-center justify-center py-3 px-3 group transition"
+            class="dock-item relative flex items-center justify-center py-2 sm:py-3 px-2 sm:px-3 group transition"
           >
 
-            <!-- ACTIVE STATE BORDER -->
+            <!-- ACTIVE STATE -->
             <span
               class="absolute inset-0 rounded-lg border border-transparent
                      group-[.active]:border-[rgba(245,158,11,0.5)]
@@ -106,7 +89,7 @@ import { siteConfig } from "../config";
             ></span>
 
             <span
-              class="relative z-10 text-sm
+              class="relative z-10 text-xs sm:text-sm
                      text-white/40
                      group-hover:text-white
                      group-[.active]:text-[rgba(245,158,11,0.95)]
@@ -138,16 +121,14 @@ import { siteConfig } from "../config";
       if (el) el.classList.add("active");
     }
 
-function moveIndicatorTo(el) {
-  if (!el || !indicator) return;
+    function moveIndicatorTo(el) {
+      if (!el || !indicator) return;
 
-  const parent = el.parentElement;
+      const top = el.offsetTop;
 
-  const top = el.offsetTop - 18;
-
-  indicator.style.transform = `translateY(${top}px)`;
-  indicator.style.height = `${el.offsetHeight}px`;
-}
+      indicator.style.transform = `translateY(${top}px)`;
+      indicator.style.height = `${el.offsetHeight}px`;
+    }
 
     function getCurrentSection() {
       let current = null;
@@ -169,7 +150,13 @@ function moveIndicatorTo(el) {
     function update() {
       const path = window.location.pathname;
 
-      if (path.includes("internship") || path.includes("guitar") || path.includes("cloudway") || path.includes("IotMouseTrap") || path.includes("projectAPT")) {
+      if (
+        path.includes("internship") ||
+        path.includes("guitar") ||
+        path.includes("cloudway") ||
+        path.includes("IotMouseTrap") ||
+        path.includes("projectAPT")
+      ) {
         const pageItem = items.find(i => i.getAttribute("href") === "/#projects");
         setActive(pageItem);
         if (pageItem) moveIndicatorTo(pageItem);
