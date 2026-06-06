@@ -1,0 +1,102 @@
+---
+import { siteConfig } from "../config";
+
+const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
+const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
+const hasEducation = siteConfig.education && siteConfig.education.length > 0;
+---
+
+<footer class="relative bg-[#0d0a07] border-t border-white/10">
+  <!-- subtle glow -->
+  <div class="absolute inset-0 -z-10">
+    <div
+      class="absolute bottom-0 left-10 h-[20rem] w-[20rem] rounded-full blur-3xl opacity-20"
+      style="background: rgba(245, 158, 11, 0.10)"
+    >
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 py-20 lg:px-8">
+    <div
+      class="flex flex-col md:flex-row md:items-start md:justify-between gap-12"
+    >
+      <!-- LEFT -->
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-syne text-2xl md:text-3xl font-bold text-white">
+            {siteConfig.name}
+          </h3>
+        </div>
+
+        <!-- socials -->
+        <div class="flex gap-5">
+          <a
+            href={`mailto:${siteConfig.social.email}`}
+            class="text-white/40 hover:text-[rgba(245,158,11,0.9)] transition"
+            aria-label="Email"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <path d="M4 4h16v16H4z"></path>
+              <path d="M4 4l8 8 8-8"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT NAV -->
+      <div class="flex flex-col gap-6 md:items-end">
+        <nav class="flex flex-wrap gap-6 text-sm">
+          <a href="#about" class="text-white/50 hover:text-white transition">
+            About
+          </a>
+
+          {
+            hasProjects && (
+              <a
+                href="#projects"
+                class="text-white/50 hover:text-white transition"
+              >
+                Projects
+              </a>
+            )
+          }
+
+          {
+            hasExperience && (
+              <a
+                href="#experience"
+                class="text-white/50 hover:text-white transition"
+              >
+                Experience
+              </a>
+            )
+          }
+
+          {
+            hasEducation && (
+              <a
+                href="#education"
+                class="text-white/50 hover:text-white transition"
+              >
+                Education
+              </a>
+            )
+          }
+        </nav>
+
+        <p class="text-xs text-white/30 font-mono tracking-wide">
+          © {new Date().getFullYear()}
+          {siteConfig.name}
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

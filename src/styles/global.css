@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+body {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+body {
+  @apply bg-[#0d0a07] text-white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#about strong {
+  color: rgba(250, 177, 50, 0.90);
+  font-weight: 600;
+  text-shadow: 0 0 12px rgba(255, 212, 139, 0.10);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

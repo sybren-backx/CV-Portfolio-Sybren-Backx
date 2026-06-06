@@ -1,0 +1,242 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { siteConfig } from "../config";
+import BackgroundEffects from "../layouts/BackgroundEffects.astro";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Advanced Programming Project | {siteConfig.name}</title>
+  </head>
+
+  <body class="bg-transparent text-white md:pl-24">
+    <BackgroundEffects />
+    <Header />
+
+    <main>
+      <!-- HERO -->
+      <section
+        class="relative overflow-hidden pt-40 pb-24 px-6 sm:px-10 md:px-16 lg:px-24"
+      >
+        <!-- glow background -->
+        <div class="absolute inset-0 -z-10">
+          <div
+            class="absolute top-24 left-24 h-[28rem] w-[28rem] rounded-full blur-3xl animate-glow-slow"
+            style="background: rgba(245, 158, 11, 0.12)"
+          >
+          </div>
+          <div
+            class="absolute bottom-0 right-10 h-[30rem] w-[30rem] rounded-full blur-3xl animate-glow-slow"
+            style="background: rgba(255, 255, 255, 0.05)"
+          >
+          </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+          <!-- TEXT -->
+          <span
+            class="font-medium tracking-widest uppercase text-xs text-[rgba(245,158,11,0.8)]"
+          >
+            Advanced Programming Topics • 2024
+          </span>
+
+          <h1 class="mt-6 text-5xl md:text-7xl font-bold leading-[1.05]">
+            Healthcare Appointment<br /> Microservices System
+          </h1>
+
+          <p class="mt-6 text-lg text-white/60 leading-relaxed max-w-2xl">
+            A distributed microservices system for managing doctor appointments,
+            patients, and doctors. Built using Spring Boot, multiple databases,
+            an API Gateway, and full observability with Prometheus.
+          </p>
+
+          <div class="flex flex-wrap gap-3 mt-10">
+            {
+              [
+                "Spring Boot",
+                "MongoDB",
+                "MySQL",
+                "Docker",
+                "Prometheus",
+                "OAuth2",
+              ].map((t) => (
+                <span class="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/70">
+                  {t}
+                </span>
+              ))
+            }
+          </div>
+
+          <!-- LARGE IMAGE -->
+          <div class="mt-14">
+            <div
+              class="rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+            >
+              <img
+                src="/images/APT.png"
+                alt="Microservices architecture diagram"
+                class="w-full h-auto object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OVERVIEW -->
+      <section class="px-6 sm:px-10 md:px-16 lg:px-24 pb-24">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-4xl font-bold">Project Overview</h2>
+          <div class="w-16 h-[2px] mt-4 bg-[rgba(245,158,11,0.6)] rounded-full">
+          </div>
+
+          <div class="mt-12 space-y-10 text-white/70 leading-relaxed">
+            <div>
+              <h3 class="text-xl font-semibold text-white">System Goal</h3>
+              <p class="mt-3">
+                The goal of this project was to design a scalable healthcare
+                platform where patients and doctors can be managed independently
+                through separate microservices. Appointments are handled through
+                a dedicated service that coordinates communication between the
+                other services.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">Architecture</h3>
+              <p class="mt-3">
+                The system is built using a microservices architecture with an
+                API Gateway as the single entry point. Services communicate
+                through REST APIs and are containerized using Docker Compose.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">Core Services</h3>
+              <p class="mt-3">
+                Patient Service (MySQL), Doctor Service (MySQL), Appointment
+                Service (MongoDB), and an API Gateway handling routing and
+                authentication via Google OAuth2.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">Observability</h3>
+              <p class="mt-3">
+                Prometheus was integrated to monitor system health, including
+                CPU usage, request metrics, response times, and service
+                availability.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ENDPOINTS -->
+      <section class="px-6 sm:px-10 md:px-16 lg:px-24 pb-24">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold">API Endpoints</h2>
+          <div class="w-16 h-[2px] mt-4 bg-[rgba(245,158,11,0.6)] rounded-full">
+          </div>
+
+          <p class="mt-6 text-white/50 max-w-2xl">
+            The API Gateway exposes all core operations for appointments,
+            doctors, and patients. Authentication is required for all write
+            operations.
+          </p>
+
+          <div class="mt-10 grid md:grid-cols-3 gap-6 text-sm text-white/70">
+            <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+              <h3 class="text-white font-semibold">Appointments</h3>
+              <p class="mt-3">
+                GET /appointments<br />
+                GET /appointments/id<br />
+                GET /appointments/patient/id<br />
+                GET /appointments/doctor/id<br />
+                POST /appointments<br />
+                PUT /appointments<br />
+                DELETE /appointments
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+              <h3 class="text-white font-semibold">Doctors</h3>
+              <p class="mt-3">
+                GET /doctors<br />
+                GET /doctors/id<br />
+                POST /doctors<br />
+                PUT /doctors<br />
+                DELETE /doctors
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl border border-white/10 bg-white/5">
+              <h3 class="text-white font-semibold">Patients</h3>
+              <p class="mt-3">
+                GET /patients<br />
+                GET /patients/id<br />
+                POST /patients<br />
+                PUT /patients<br />
+                DELETE /patients
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MONITORING -->
+      <section class="px-6 sm:px-10 md:px-16 lg:px-24 pb-32">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-4xl font-bold">Monitoring & Deployment</h2>
+          <div class="w-16 h-[2px] mt-4 bg-[rgba(245,158,11,0.6)] rounded-full">
+          </div>
+
+          <div class="mt-12 space-y-10 text-white/70 leading-relaxed">
+            <div>
+              <h3 class="text-xl font-semibold text-white">Containerization</h3>
+              <p class="mt-3">
+                All services were containerized using Docker and orchestrated
+                via Docker Compose, allowing consistent deployment across
+                environments.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">Security</h3>
+              <p class="mt-3">
+                Authentication was implemented at the API Gateway using Google
+                OAuth2, ensuring secure access to protected endpoints.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">
+                Prometheus Monitoring
+              </h3>
+              <p class="mt-3">
+                The system was monitored using Prometheus, tracking CPU usage,
+                request counts per endpoint, response times, and service health.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">Result</h3>
+              <p class="mt-3">
+                The final result is a fully distributed healthcare backend that
+                demonstrates microservices architecture, real-time monitoring,
+                authentication, and scalable API design. The system successfully
+                separates concerns while maintaining smooth inter-service
+                communication.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

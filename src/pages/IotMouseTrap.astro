@@ -1,0 +1,207 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import BackgroundEffects from "../layouts/BackgroundEffects.astro";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>IoT Mouse Trap</title>
+  </head>
+
+  <body class="bg-transparent text-white md:pl-24">
+    <BackgroundEffects />
+    <Header />
+
+    <main>
+      <!-- HERO -->
+      <section
+        class="relative overflow-hidden pt-40 pb-24 px-6 sm:px-10 md:px-16 lg:px-24"
+      >
+        <!-- glow background -->
+        <div class="absolute inset-0 -z-10">
+          <div
+            class="absolute top-24 left-24 h-[28rem] w-[28rem] rounded-full blur-3xl animate-glow-slow"
+            style="background: rgba(245, 158, 11, 0.12)"
+          >
+          </div>
+          <div
+            class="absolute bottom-0 right-10 h-[30rem] w-[30rem] rounded-full blur-3xl animate-glow-slow"
+            style="background: rgba(255, 255, 255, 0.05)"
+          >
+          </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+            <!-- LEFT -->
+            <div class="md:col-span-7">
+              <span
+                class="font-medium tracking-widest uppercase text-xs"
+                style="color: rgba(245, 158, 11, 0.8)"
+              >
+                Personal Project • 2023
+              </span>
+
+              <h1 class="mt-6 text-5xl md:text-7xl font-bold leading-[1.05]">
+                Raspberry Pi <br /> Mouse Trap
+              </h1>
+
+              <p class="mt-6 max-w-2xl text-lg text-white/60 leading-relaxed">
+                A smart IoT mousetrap system powered by a Raspberry Pi that
+                detects movement using sensors and automatically triggers a
+                mechanical capture mechanism. The goal was to explore embedded
+                systems, automation, and sensor-based decision making.
+              </p>
+
+              <div class="flex flex-wrap gap-3 mt-10">
+                {
+                  [
+                    "Python",
+                    "IoT",
+                    "Raspberry Pi",
+                    "Sensors",
+                    "Automation",
+                  ].map((t) => (
+                    <span class="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/70">
+                      {t}
+                    </span>
+                  ))
+                }
+              </div>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="md:col-span-5">
+              <div
+                class="rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+              >
+                <img
+                  src="/images/Iot_Mouse_Trap.jpg"
+                  alt="IoT Mouse Trap system diagram"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEO -->
+      <section class="px-6 sm:px-10 md:px-16 lg:px-24 pb-24">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold">System Demo</h2>
+          <div class="w-16 h-[2px] mt-4 bg-[rgba(245,158,11,0.6)] rounded-full">
+          </div>
+
+          <p class="mt-6 text-white/50 max-w-2xl">
+            The demo shows the full detection cycle: sensor input → Raspberry Pi
+            processing → trigger activation of the mechanical trap system.
+          </p>
+
+          <div
+            class="mt-10 rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+          >
+            <video
+              class="w-full"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            >
+              <source src="/videos/Mouse_Trap_Demo.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </section>
+      <!-- PROJECT -->
+      <section class="px-6 sm:px-10 md:px-16 lg:px-24 pb-32">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-4xl font-bold">Project</h2>
+          <div class="w-16 h-[2px] mt-4 bg-[rgba(245,158,11,0.6)] rounded-full">
+          </div>
+
+          <div class="mt-12 space-y-10 text-white/70 leading-relaxed">
+            <div>
+              <h3 class="text-xl font-semibold text-white">Context</h3>
+              <p class="mt-3">
+                This project was developed as part of the IoT Essentials course
+                in the Bachelor of Applied Computer Science at Campus Geel. The
+                goal was to design and implement a fully working Internet of
+                Things system that combines hardware, sensors, and cloud
+                communication into a functional prototype.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">
+                Project — Smart Mouse Trap
+              </h3>
+              <p class="mt-3">
+                The system is an automated mouse trap built around a Raspberry
+                Pi. It detects movement using an ultrasonic echo sensor and
+                triggers a mechanical capture mechanism when an object is
+                detected within range. The trap includes a motor-driven door
+                system, visual feedback through an LCD screen, and status
+                indication via an LED and relay module.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">
+                Hardware Components
+              </h3>
+              <p class="mt-3">
+                The prototype integrates several hardware modules: a Raspberry
+                Pi as the main controller, an ultrasonic distance sensor for
+                detection, a stepper motor for the trap mechanism, an LCD
+                display for system status, a relay board for electrical control,
+                and physical buttons for triggering and resetting the system.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">
+                Software Implementation
+              </h3>
+              <p class="mt-3">
+                The software is written in Python and uses GPIO control via
+                WiringPi. The system continuously measures distance readings,
+                evaluates trigger conditions, and executes motor sequences when
+                a target is detected. It also manages system states (armed /
+                triggered / reset) and updates the LCD display in real time.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">IoT Integration</h3>
+              <p class="mt-3">
+                The trap is connected to the Ubeac IoT platform, where sensor
+                data such as trap status and trigger count are uploaded in JSON
+                format. This allows remote monitoring of system activity and
+                historical tracking of trap events.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">Outcome</h3>
+              <p class="mt-3">
+                The final result is a fully working IoT prototype that brings
+                together sensors, real-time hardware control, and cloud
+                connectivity. It combines embedded programming, mechanical
+                design, and data communication into a single, functional smart
+                system.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

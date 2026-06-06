@@ -1,0 +1,191 @@
+---
+import { siteConfig } from "../config";
+---
+
+<!-- MOBILE NAV -->
+<header class="md:hidden fixed top-0 left-0 w-full z-50">
+  <nav
+    class="relative px-5 py-4
+           bg-[#0d0a07]/60 backdrop-blur-2xl
+           border-b border-white/10
+           shadow-[0_20px_60px_rgba(0,0,0,0.6)]
+           flex items-center justify-between"
+  >
+
+    <!-- subtle glow -->
+    <div class="absolute inset-0 pointer-events-none opacity-30">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[22rem] h-14 blur-3xl bg-[rgba(245,158,11,0.15)]"></div>
+    </div>
+
+    <a href="/" class="text-sm font-semibold text-[rgba(245,158,11,0.9)]">
+      Sybren Backx
+    </a>
+
+    <div class="flex gap-4 text-xs">
+      {[
+        ["About", "/#about"],
+        ["Projects", "/#projects"],
+        ["Experience", "/#experience"],
+        ["Education", "/#education"],
+        ["Internship", "/internship"],
+      ].map(([label, href]) => (
+        <a
+          href={href}
+          class="text-white/60 hover:text-[rgba(245,158,11,0.9)] transition"
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+  </nav>
+</header>
+
+<!-- DESKTOP DOCK -->
+<header
+  id="header"
+  class="fixed top-1/2 left-6 -translate-y-1/2 z-50 hidden md:block"
+>
+
+  <!-- spine -->
+  <div class="absolute inset-y-0 left-1 w-[2px] -z-10">
+    <div class="h-full w-full bg-gradient-to-b from-transparent via-[rgba(245,158,11,0.35)] to-transparent blur-sm"></div>
+  </div>
+
+  <nav
+    id="dock"
+    class="relative flex flex-col justify-between
+           h-[72vh] min-h-[460px]
+           px-2 py-6
+           bg-transparent
+           border border-white/10
+           backdrop-blur-xl
+           rounded-2xl
+           overflow-hidden"
+  >
+
+    <!-- soft ambient glow only -->
+    <div
+      class="absolute inset-0 opacity-20 pointer-events-none"
+      style="background: radial-gradient(circle at 50% 20%, rgba(245,158,11,0.18), transparent 65%)"
+    ></div>
+
+    <!-- active indicator -->
+    <div
+      id="active-indicator"
+      class="absolute left-0 w-[3px] rounded-full
+             bg-[rgba(245,158,11,0.95)]
+             shadow-[0_0_25px_rgba(245,158,11,0.8)]
+             transition-all duration-300 ease-out"
+    ></div>
+
+    {
+      [
+        ["About", "/#about"],
+        ["Projects", "/#projects"],
+        ["Experience", "/#experience"],
+        ["Education", "/#education"],
+        ["Internship", "/internship"],
+      ].map(([label, href]) => {
+        const isAnchor = href.startsWith("/#");
+        const target = isAnchor ? href.replace("/#", "") : null;
+
+        return (
+          <a
+            href={href}
+            data-target={target}
+            class="dock-item relative flex items-center justify-center py-3 px-3 group transition"
+          >
+
+            <!-- ACTIVE STATE BORDER -->
+            <span
+              class="absolute inset-0 rounded-lg border border-transparent
+                     group-[.active]:border-[rgba(245,158,11,0.5)]
+                     group-[.active]:bg-white/5
+                     group-[.active]:shadow-[0_0_20px_rgba(245,158,11,0.15)]
+                     transition"
+            ></span>
+
+            <span
+              class="relative z-10 text-sm
+                     text-white/40
+                     group-hover:text-white
+                     group-[.active]:text-[rgba(245,158,11,0.95)]
+                     group-[.active]:font-medium
+                     transition"
+            >
+              {label}
+            </span>
+          </a>
+        );
+      })
+    }
+  </nav>
+</header>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const indicator = document.getElementById("active-indicator");
+    const items = [...document.querySelectorAll(".dock-item")];
+
+    const anchors = items.filter(i => i.dataset.target);
+
+    const sections = anchors
+      .map(i => document.getElementById(i.dataset.target))
+      .filter(Boolean);
+
+    function setActive(el) {
+      items.forEach(i => i.classList.remove("active"));
+      if (el) el.classList.add("active");
+    }
+
+function moveIndicatorTo(el) {
+  if (!el || !indicator) return;
+
+  const parent = el.parentElement;
+
+  const top = el.offsetTop - 18;
+
+  indicator.style.transform = `translateY(${top}px)`;
+  indicator.style.height = `${el.offsetHeight}px`;
+}
+
+    function getCurrentSection() {
+      let current = null;
+      let best = Infinity;
+
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const distance = Math.abs(rect.top - window.innerHeight * 0.35);
+
+        if (rect.top < window.innerHeight && distance < best) {
+          best = distance;
+          current = section.id;
+        }
+      });
+
+      return current;
+    }
+
+    function update() {
+      const path = window.location.pathname;
+
+      if (path.includes("internship") || path.includes("guitar") || path.includes("cloudway") || path.includes("IotMouseTrap") || path.includes("projectAPT")) {
+        const pageItem = items.find(i => i.getAttribute("href") === "/#projects");
+        setActive(pageItem);
+        if (pageItem) moveIndicatorTo(pageItem);
+        return;
+      }
+
+      const currentId = getCurrentSection();
+      const match = anchors.find(a => a.dataset.target === currentId);
+
+      setActive(match);
+      if (match) moveIndicatorTo(match);
+    }
+
+    window.addEventListener("scroll", () => requestAnimationFrame(update));
+    window.addEventListener("resize", update);
+
+    update();
+  });
+</script>

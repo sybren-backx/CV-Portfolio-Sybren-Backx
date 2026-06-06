@@ -1,0 +1,172 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import BackgroundEffects from "../layouts/BackgroundEffects.astro";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Guitar AR Project</title>
+  </head>
+
+  <body class="bg-transparent text-white md:pl-24">
+    <BackgroundEffects />
+    <Header />
+
+    <main>
+      <!-- HERO -->
+      <section
+        class="relative overflow-hidden pt-40 pb-24 px-6 sm:px-10 md:px-16 lg:px-24"
+      >
+        <!-- glow background -->
+        <div class="absolute inset-0 -z-10">
+          <div
+            class="absolute top-24 left-24 h-[28rem] w-[28rem] rounded-full blur-3xl animate-glow-slow"
+            style="background: rgba(245, 158, 11, 0.12)"
+          >
+          </div>
+          <div
+            class="absolute bottom-0 right-10 h-[30rem] w-[30rem] rounded-full blur-3xl animate-glow-slow"
+            style="background: rgba(255, 255, 255, 0.05)"
+          >
+          </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+            <!-- LEFT: TEXT -->
+            <div class="md:col-span-7">
+              <span
+                class="font-medium tracking-widest uppercase text-xs"
+                style="color: rgba(245, 158, 11, 0.8)"
+              >
+                Augmented Reality • Mobile Development • 2024 — 2025
+              </span>
+
+              <h1 class="mt-6 text-5xl md:text-7xl font-bold leading-[1.05]">
+                AR Guitar Learning App
+              </h1>
+
+              <p class="mt-6 max-w-2xl text-lg text-white/60 leading-relaxed">
+                A mobile augmented reality app that helps beginners learn guitar
+                by visually guiding finger placement on the fretboard using song
+                tabs. The goal is to make learning new songs more intuitive and
+                interactive.
+              </p>
+
+              <div class="flex flex-wrap gap-3 mt-10">
+                {
+                  ["Flutter", "Unity", "Vuforia AR", "C#"].map((t) => (
+                    <span class="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/70">
+                      {t}
+                    </span>
+                  ))
+                }
+              </div>
+            </div>
+
+            <!-- RIGHT: IMAGE -->
+            <div class="md:col-span-5">
+              <div
+                class="rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+              >
+                <img
+                  src="/images/Flutter.png"
+                  alt="Guitar AR concept preview"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEO -->
+      <section class="px-6 sm:px-10 md:px-16 lg:px-24 pb-24">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold">Demo</h2>
+          <div class="w-16 h-[2px] mt-4 bg-[rgba(245,158,11,0.6)] rounded-full">
+          </div>
+
+          <p class="mt-6 text-white/50 max-w-2xl">
+            The demo shows the core concept of the application: selecting a song
+            and visualizing finger positions directly on the guitar fretboard
+            using augmented reality.
+          </p>
+
+          <div class="mt-10">
+            <div
+              class="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+            >
+              <video
+                class="absolute inset-0 w-full h-full object-cover"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+              >
+                <source src="/videos/Guitar_Demo.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECT -->
+      <section class="px-6 sm:px-10 md:px-16 lg:px-24 pb-32">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-4xl font-bold">Project</h2>
+          <div class="w-16 h-[2px] mt-4 bg-[rgba(245,158,11,0.6)] rounded-full">
+          </div>
+
+          <div class="mt-12 space-y-10 text-white/70 leading-relaxed">
+            <div>
+              <h3 class="text-xl font-semibold text-white">Context</h3>
+              <p class="mt-3">
+                This project was developed out of a personal interest in
+                learning guitar. As a self-taught player without formal music
+                theory training, I wanted to explore how augmented reality could
+                simplify the learning process for beginners.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">Concept</h3>
+              <p class="mt-3">
+                The application allows users to select a song and view its
+                guitar tabs in real time. Using augmented reality, the correct
+                finger positions are displayed directly on the fretboard,
+                helping users play along more easily.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">Technology</h3>
+              <p class="mt-3">
+                The application is built using Unity with Vuforia for augmented
+                reality tracking. C# is used for application logic, handling
+                song data, and rendering AR overlays based on tab input.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">Outcome</h3>
+              <p class="mt-3">
+                The result is a functional prototype that demonstrates how
+                augmented reality can support music education. It provides a
+                more visual and interactive way for beginners to learn guitar
+                songs and understand finger placement.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

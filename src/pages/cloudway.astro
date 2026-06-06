@@ -1,0 +1,269 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { siteConfig } from "../config";
+import BackgroundEffects from "../layouts/BackgroundEffects.astro";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>SKIL3 Cloudway Project | {siteConfig.name}</title>
+  </head>
+
+  <body class="bg-transparent text-white md:pl-24">
+    <BackgroundEffects />
+    <Header />
+
+    <main>
+      <!-- HERO -->
+      <section
+        class="relative overflow-hidden pt-40 pb-24 px-6 sm:px-10 md:px-16 lg:px-24"
+      >
+        <!-- glow -->
+        <div class="absolute inset-0 -z-10">
+          <div
+            class="absolute top-24 left-24 h-[28rem] w-[28rem] rounded-full blur-3xl animate-glow-slow"
+            style="background: rgba(245, 158, 11, 0.12)"
+          >
+          </div>
+          <div
+            class="absolute bottom-0 right-10 h-[30rem] w-[30rem] rounded-full blur-3xl animate-glow-slow"
+            style="background: rgba(255, 255, 255, 0.05)"
+          >
+          </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+            <!-- TEXT -->
+            <div class="md:col-span-7">
+              <span
+                class="font-medium tracking-widest uppercase text-xs text-[rgba(245,158,11,0.8)]"
+              >
+                SKIL3 • Cloudway • 2024
+              </span>
+
+              <h1 class="mt-6 text-5xl md:text-7xl font-bold leading-[1.05]">
+                Logic Unit<br /> Integration Platform
+              </h1>
+
+              <p class="mt-6 text-lg text-white/60 leading-relaxed max-w-2xl">
+                A system-to-system integration platform built for Cloudway that
+                enables structured AI-driven logic execution, API orchestration,
+                and multi-service communication through a unified Logic Unit
+                engine.
+              </p>
+
+              <div class="flex flex-wrap gap-3 mt-10">
+                {
+                  [
+                    "Node.js",
+                    "TypeScript",
+                    "AWS",
+                    "OAuth2",
+                    "Microservices",
+                    "APIs",
+                  ].map((t) => (
+                    <span class="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/70">
+                      {t}
+                    </span>
+                  ))
+                }
+              </div>
+            </div>
+
+            <!-- IMAGE -->
+            <div class="md:col-span-4">
+              <div
+                class="rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+              >
+                <img
+                  src="/images/cloudway.png"
+                  alt="Cloudway Logo"
+                  class="w-full h-auto object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OVERVIEW -->
+      <section class="px-6 sm:px-10 md:px-16 lg:px-24 pb-24">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-4xl font-bold">Project Overview</h2>
+          <div class="w-16 h-[2px] mt-4 bg-[rgba(245,158,11,0.6)] rounded-full">
+          </div>
+
+          <div class="mt-12 space-y-10 text-white/70 leading-relaxed">
+            <div>
+              <h3 class="text-xl font-semibold text-white">
+                Client — Cloudway
+              </h3>
+              <p class="mt-3">
+                This project was developed for Cloudway (Corda Campus, Hasselt).
+                The goal was to build an intelligent integration layer for their
+                Logic Unit system, allowing AI-driven reasoning to interact with
+                external services in a structured and secure way.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">Team Structure</h3>
+              <p class="mt-3">
+                The project team consisted of <b>7 students</b> in total:
+                <b>4 AI students</b>, <b>2 CCS students</b>, and myself as the <b
+                  >Application Development (APP) student</b
+                >. I was solely responsible for the full APP scope, including
+                API design, backend implementation, integration logic, and
+                deployment configuration.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">My Role</h3>
+              <p class="mt-3">
+                I acted as <b>Group Lead and Scrum Master</b>, coordinating
+                sprint planning, task distribution, and communication between
+                technical and non-technical team members. I also ensured
+                alignment between the AI logic outputs and the application
+                layer.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">Core Concept</h3>
+              <p class="mt-3">
+                The Logic Unit transforms natural language into structured
+                facts, processes them through a reasoning engine, and returns
+                validated outputs. The system supports APIs, webhooks,
+                authentication flows, and multi-modal inputs such as text and
+                documents.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- IMAGE / CAROUSEL -->
+      <div class="md:col-span-12">
+        <div class="relative group w-full max-w-6xl mx-auto">
+          <div
+            id="cloudwayCarousel"
+            class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide
+             rounded-4xl border border-white/10 bg-white/5"
+          >
+            {
+              [
+                "/images/Cloudway1.png",
+                "/images/Cloudway2.png",
+                "/images/Cloudway3.png",
+                "/images/Cloudway4.png",
+                "/images/Cloudway5.png",
+                "/images/Cloudway6.png",
+                "/images/Cloudway7.png",
+                "/images/Cloudway8.png",
+              ].map((src) => (
+                <div class="min-w-full snap-center flex items-center justify-center p-3">
+                  <img
+                    src={src}
+                    alt="Cloudway architecture screenshot"
+                    class="w-full max-h-[350px] object-contain rounded-xl"
+                  />
+                </div>
+              ))
+            }
+          </div>
+
+          <!-- LEFT ARROW -->
+          <button
+            onclick="document.getElementById('cloudwayCarousel').scrollBy({ left: -300, behavior: 'smooth' })"
+            class="absolute left-2 top-1/2 -translate-y-1/2 z-30
+             w-10 h-10 rounded-full
+             bg-black/50 hover:bg-black/80
+             border border-white/10
+             flex items-center justify-center
+             opacity-0 group-hover:opacity-100 transition
+             backdrop-blur"
+          >
+            ‹
+          </button>
+
+          <!-- RIGHT ARROW -->
+          <button
+            onclick="document.getElementById('cloudwayCarousel').scrollBy({ left: 300, behavior: 'smooth' })"
+            class="absolute right-2 top-1/2 -translate-y-1/2 z-30
+             w-10 h-10 rounded-full
+             bg-black/50 hover:bg-black/80
+             border border-white/10
+             flex items-center justify-center
+             opacity-0 group-hover:opacity-100 transition
+             backdrop-blur"
+          >
+            ›
+          </button>
+        </div>
+      </div>
+
+      <!-- TECHNICAL -->
+      <section class="px-6 sm:px-10 md:px-16 lg:px-24 pb-32">
+        <div class="max-w-3xl mx-auto">
+          <h2 class="text-4xl font-bold">Technical Implementation</h2>
+          <div class="w-16 h-[2px] mt-4 bg-[rgba(245,158,11,0.6)] rounded-full">
+          </div>
+
+          <div class="mt-12 space-y-10 text-white/70 leading-relaxed">
+            <div>
+              <h3 class="text-xl font-semibold text-white">
+                Logic Unit Engine
+              </h3>
+              <p class="mt-3">
+                The core engine converts natural language into structured facts,
+                which are processed using a rule-based reasoning system. Outputs
+                can be returned as natural language or structured JSON tool
+                results for downstream services.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">
+                API & Integration Layer
+              </h3>
+              <p class="mt-3">
+                A unified API Gateway exposes endpoints for communication with
+                the Logic Unit. It supports both simple message-based requests
+                and structured context-driven inputs for advanced integration
+                scenarios.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">Security</h3>
+              <p class="mt-3">
+                Authentication is handled using OAuth2 (Azure AD), with
+                short-lived access tokens and secured API Gateway routing for
+                all requests.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white">
+                Deployment & Monitoring
+              </h3>
+              <p class="mt-3">
+                The system is containerized and deployed on AWS using CI/CD
+                pipelines. Monitoring includes logging, uptime tracking, and
+                request performance analysis.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

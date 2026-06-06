@@ -1,0 +1,385 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { siteConfig } from "../config";
+import BackgroundEffects from "../layouts/BackgroundEffects.astro";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Internship | {siteConfig.name}</title>
+  </head>
+
+  <body class="bg-transparent text-white md:pl-24">
+    <BackgroundEffects />
+    <Header />
+
+    <main>
+      <!-- HERO -->
+      <section
+        class="relative overflow-hidden pt-40 pb-24 px-6 sm:px-10 md:px-16 lg:px-24"
+      >
+        <!-- glow background -->
+        <div class="absolute inset-0 -z-10">
+          <div
+            class="absolute top-24 left-24 h-[28rem] w-[28rem] rounded-full blur-3xl animate-glow-slow"
+            style="background: rgba(245, 158, 11, 0.12)"
+          >
+          </div>
+          <div
+            class="absolute bottom-0 right-10 h-[30rem] w-[30rem] rounded-full blur-3xl animate-glow-slow"
+            style="background: rgba(255, 255, 255, 0.05)"
+          >
+          </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+            <!-- Left: TEXT -->
+            <div class="md:col-span-7">
+              <span
+                class="font-medium tracking-widest uppercase text-xs"
+                style="color: rgba(245, 158, 11, 0.8)"
+              >
+                Tokheim • Feb 2026 — May 2026
+              </span>
+
+              <h1 class="mt-6 text-5xl md:text-7xl font-bold leading-[1.05]">
+                Interactive Map <br /> Dashboard
+              </h1>
+
+              <p class="mt-6 max-w-2xl text-lg text-white/60 leading-relaxed">
+                During my internship at Tokheim (part of Dover Fueling
+                Solutions), I developed a geospatial dashboard that visualizes
+                station data on an interactive map using Angular, Leaflet, .NET,
+                and SQL Server. The goal was to extend OnePortal, an online
+                management platform for clients, with a high level overview of
+                stations.
+              </p>
+
+              <div class="flex flex-wrap gap-3 mt-10">
+                {
+                  ["Angular", "Leaflet", ".NET", "SQL Server"].map((t) => (
+                    <span class="px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/70">
+                      {t}
+                    </span>
+                  ))
+                }
+              </div>
+            </div>
+            <!-- Right: IMAGE -->
+            <div class="md:col-span-5">
+              <div
+                class="rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+              >
+                <img
+                  src="/images/tokheim.png"
+                  alt="Tokheim preview"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- DOWNLOADS -->
+      <section class="px-6 sm:px-10 md:px-16 lg:px-24 pb-24">
+        <div class="max-w-6xl mx-auto">
+          <div class="mb-10">
+            <h2 class="font-bold text-4xl">Documents</h2>
+            <div
+              class="w-16 h-[2px] mt-4 bg-[rgba(245,158,11,0.6)] rounded-full"
+            >
+            </div>
+            <p class="mt-4 text-white/50 max-w-xl">
+              Download internship deliverables and reports.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {
+              [
+                [
+                  "Project Plan",
+                  "Scope, planning, and feasibility study (geocoding + mapping tools).",
+                  "/documents/Tokheim_Project_Plan.pdf",
+                ],
+                [
+                  "Realisation document",
+                  "Implementation of geocoding, backend updates, and Leaflet dashboard.",
+                  "/documents/Tokheim_Realisation_Document.pdf",
+                ],
+                [
+                  "Internship Reflection",
+                  "Evaluation of technical decisions, challenges, and learning outcomes.",
+                  "/documents/Tokheim_Reflection.pdf",
+                ],
+                [
+                  "Map Manual",
+                  "Technical manual, screenshots, and documentation.",
+                  "/documents/ONE_Portal_F_Map_Manual.pdf",
+                ],
+              ].map(([title, desc, link]) => (
+                <a
+                  href={link}
+                  download
+                  class="group p-7 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1"
+                >
+                  <h3 class="font-syne text-xl font-semibold">{title}</h3>
+                  <p class="mt-3 text-white/50 text-sm leading-relaxed">
+                    {desc}
+                  </p>
+                  <div class="mt-6 text-xs tracking-widest uppercase text-[rgba(245,158,11,0.8)]">
+                    Download →
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- video -->
+      <section class="px-6 sm:px-10 md:px-16 lg:px-24 pb-6">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl font-bold">Leaflet Dashboard</h2>
+          <div class="w-16 h-[2px] mt-4 bg-[rgba(245,158,11,0.6)] rounded-full">
+          </div>
+
+          <p class="mt-6 text-white/50 max-w-2xl">
+            The dashboard provides a map-based view of all stations in a CouCom
+            network. Stations are clustered, color-coded by alert status, and
+            fully interactive with drill-down navigation.
+          </p>
+
+          <!-- CAROUSEL WRAPPER -->
+          <div class="mt-10 relative group">
+            <div
+              id="videoCarousel"
+              class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide"
+            >
+              <!-- VIDEO 1 -->
+              <div class="min-w-full snap-center">
+                <div
+                  class="rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+                >
+                  <video
+                    class="w-full"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                  >
+                    <source
+                      src="/videos/Tokheim_Select_CouCom.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+              </div>
+
+              <!-- VIDEO 2 -->
+              <div class="min-w-full snap-center">
+                <div
+                  class="rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+                >
+                  <video class="w-full" controls playsinline preload="metadata">
+                    <source
+                      src="/videos/Tokheim_Select_Popup.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+              </div>
+
+              <!-- VIDEO 3 -->
+              <div class="min-w-full snap-center">
+                <div
+                  class="rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+                >
+                  <video class="w-full" controls playsinline preload="metadata">
+                    <source
+                      src="/videos/Tokheim_Clustering.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+              </div>
+            </div>
+
+            <!-- ARROWS -->
+            <button
+              onclick="document.getElementById('videoCarousel').scrollBy({ left: -window.innerWidth, behavior: 'smooth' })"
+              class="absolute left-2 top-1/2 -translate-y-1/2 z-20
+         bg-black/40 hover:bg-black/60 border border-white/10
+         w-10 h-10 rounded-full flex items-center justify-center
+         transition"
+            >
+              ‹
+            </button>
+
+            <button
+              onclick="document.getElementById('videoCarousel').scrollBy({ left: window.innerWidth, behavior: 'smooth' })"
+              class="absolute right-2 top-1/2 -translate-y-1/2 z-20
+         bg-black/40 hover:bg-black/60 border border-white/10
+         w-10 h-10 rounded-full flex items-center justify-center
+         transition"
+            >
+              ›
+            </button>
+          </div>
+
+          <!-- DOTS -->
+          <div class="flex justify-center gap-2 mt-6">
+            <span class="w-2 h-2 rounded-full bg-white/60"></span>
+            <span class="w-2 h-2 rounded-full bg-white/20"></span>
+            <span class="w-2 h-2 rounded-full bg-white/20"></span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+
+  <!-- PROJECT -->
+  <section class="px-6 sm:px-10 md:px-16 lg:px-24 pb-32">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-4xl font-bold">Project</h2>
+      <div class="w-16 h-[2px] mt-4 bg-[rgba(245,158,11,0.6)] rounded-full">
+      </div>
+
+      <div class="mt-12 space-y-12 text-white/70 leading-relaxed">
+        <div>
+          <h3 class="text-xl font-semibold text-white">Company — Tokheim</h3>
+
+          <p class="mt-3">
+            Tokheim, part of Dover Fueling Solutions, develops fuel retail
+            technology including dispensers, payment systems, and station
+            management software. During my internship I worked within the
+            development team responsible for ONE Portal, a web-based platform
+            used by customers to monitor and manage fuel stations.
+          </p>
+
+          <p class="mt-4">
+            The project focused on improving visibility by adding a geospatial
+            overview to existing monitoring tools. This feature would allow
+            users to quickly identify station issues and navigate through large
+            networks more efficiently.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-white">Background</h3>
+
+          <p class="mt-3">
+            Before the project, alerts and station information were primarily
+            displayed through a hierarchical tree structure. While functional,
+            this approach lacked a visual representation of the network's
+            status.
+          </p>
+
+          <p class="mt-4">
+            The idea behind the internship project was to introduce a map-based
+            visualization layer that would provide a high-level overview of
+            station status whilst resuing the filtering capabilities from the
+            tree structure.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-white">Objective</h3>
+
+          <p class="mt-3">
+            The main objective was to design and implement an interactive
+            dashboard capable of displaying all stations on a geographic map.
+            The solution needed to support clustering, status indicators,
+            navigation to station details, and integration with existing backend
+            systems.
+          </p>
+
+          <p class="mt-4">
+            A key requirement was ensuring that users could quickly identify
+            stations requiring attention without having to manually search
+            through large lists of alerts.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-white">Technical Challenges</h3>
+
+          <p class="mt-3">
+            One of the primary challenges was that many stations in the database
+            did not contain geographic coordinates. To solve this problem, a
+            geocoding process was developed using Python and the Nominatim
+            OpenStreetMap API. Station addresses were converted into latitude
+            and longitude values and stored in the database for future use.
+          </p>
+
+          <p class="mt-4">
+            Another challenge involved efficiently rendering large numbers of
+            stations on the map. Leaflet clustering was implemented to group
+            nearby stations together and maintain good performance regardless of
+            zoom level.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-white">Implementation</h3>
+
+          <p class="mt-3">
+            The frontend was developed using Angular and Leaflet. Custom map
+            markers were created to visualize station status and alert severity.
+            Users can zoom, pan, select stations, and navigate directly to
+            detailed station views from the map interface.
+          </p>
+
+          <p class="mt-4">
+            On the backend, existing .NET APIs were extended to provide
+            geospatial data to the frontend. Microsoft SQL Server was used to
+            store station information, coordinates, and related operational
+            data.
+          </p>
+
+          <p class="mt-4">
+            Additional work included implementing filtering mechanisms,
+            integrating clustering behavior, and ensuring compatibility with the
+            existing architecture of ONE Portal.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-white">Technology Stack</h3>
+
+          <p class="mt-3">
+            The project combines multiple technologies across the application
+            stack:
+          </p>
+
+          <ul class="mt-4 space-y-2 list-disc list-inside text-white/60">
+            <li>Angular for the frontend application</li>
+            <li>Leaflet for interactive geospatial visualization</li>
+            <li>.NET APIs for backend services</li>
+            <li>Microsoft SQL Server for data persistence</li>
+            <li>Python and Nominatim for geocoding station addresses</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-semibold text-white">Outcome</h3>
+
+          <p class="mt-3">
+            The result is a fully functional geospatial dashboard integrated
+            into ONE Portal. Users can view stations on an interactive map,
+            quickly identify problem locations, and navigate through networks
+            far more efficiently than with the previous tree-based approach.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</html>
+
+<Footer />
