@@ -41,7 +41,7 @@ export const siteConfig = {
       description:
         "A smart mousetrap system powered by a Raspberry Pi that automatically detects movement and triggers a mechanical capture mechanism.",
       link: "/IotMouseTrap",
-      skills: ["Python", "IoT", "Raspberyy Pi"],
+      skills: ["Python", "IoT", "Raspberry Pi"],
       image: "/images/trap.png"
     },
     {
